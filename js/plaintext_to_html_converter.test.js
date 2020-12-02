@@ -12,4 +12,37 @@ describe("Text Converter", () => {
     expect(result).toEqual("simple")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
+
+  it("<", () => {
+    fs.readFileSync.mockReturnValue("< big")
+    const converter = new PlaintextToHtmlConverter()
+    const result = converter.toHtml()
+    expect(result).toEqual("&lt; big")
+    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
+  })
+
+
+  it(">", () => {
+    fs.readFileSync.mockReturnValue("> small")
+    const converter = new PlaintextToHtmlConverter()
+    const result = converter.toHtml()
+    expect(result).toEqual("&gt; small")
+    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
+  })
+
+  it("&", () => {
+    fs.readFileSync.mockReturnValue("& blank")
+    const converter = new PlaintextToHtmlConverter()
+    const result = converter.toHtml()
+    expect(result).toEqual("&amp; blank")
+    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
+  })
+
+  it("\n", () => {
+    fs.readFileSync.mockReturnValue("line break \n")
+    const converter = new PlaintextToHtmlConverter()
+    const result = converter.toHtml()
+    expect(result).toEqual("line break <br />")
+    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
+  })
 })
