@@ -1,8 +1,8 @@
 const Game = require("./trivia_game.js")
 
-describe("The test environment", () => {
+describe("Trivia", () => {
   
-  xit("an example usage", function () {
+  it("a sample usage", function () {
     let notAWinner = false
 
     let game = new Game()
