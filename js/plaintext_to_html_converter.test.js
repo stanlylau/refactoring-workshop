@@ -14,35 +14,42 @@ describe("Text Converter", () => {
   })
 
   it("<", () => {
-    fs.readFileSync.mockReturnValue("< big")
+    fs.readFileSync.mockReturnValue("<")
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
-    expect(result).toEqual("&lt; big")
+    expect(result).toEqual("&lt;")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
-
   it(">", () => {
-    fs.readFileSync.mockReturnValue("> small")
+    fs.readFileSync.mockReturnValue(">")
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
-    expect(result).toEqual("&gt; small")
+    expect(result).toEqual("&gt;")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("&", () => {
-    fs.readFileSync.mockReturnValue("& blank")
+    fs.readFileSync.mockReturnValue("&")
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
-    expect(result).toEqual("&amp; blank")
+    expect(result).toEqual("&amp;")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("\n", () => {
-    fs.readFileSync.mockReturnValue("line break \n")
+    fs.readFileSync.mockReturnValue("\n")
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
-    expect(result).toEqual("line break <br />")
+    expect(result).toEqual("<br />")
+    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
+  })
+
+  it("more than 1 char encoding with word", () => {
+    fs.readFileSync.mockReturnValue("<small>")
+    const converter = new PlaintextToHtmlConverter()
+    const result = converter.toHtml()
+    expect(result).toEqual("&lt;small&gt;")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 })
