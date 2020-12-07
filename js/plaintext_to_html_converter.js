@@ -1,3 +1,4 @@
+// Adapted from https://github.com/emilybache/Racing-Car-Katas
 const notifier = require("./notifier.js")
 const fs = require('fs')
 const path = require("path")

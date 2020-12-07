@@ -1,3 +1,5 @@
+# Adapted from https://github.com/emilybache/Racing-Car-Katas
+
 class PlaintextToHtmlConverter
   def to_html
     @source = IO.read('./lib/simple.txt')

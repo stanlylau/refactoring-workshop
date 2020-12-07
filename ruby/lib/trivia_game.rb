@@ -1,3 +1,5 @@
+# Adapted from https://github.com/jbrains/trivia
+
 class Game
   def  initialize
     @players = []

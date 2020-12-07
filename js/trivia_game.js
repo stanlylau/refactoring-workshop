@@ -1,3 +1,5 @@
+// Adapted from https://github.com/jbrains/trivia
+
 var Game = function () {
   var players = new Array()
   var places = new Array(6)
