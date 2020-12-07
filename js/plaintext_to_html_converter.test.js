@@ -45,11 +45,11 @@ describe("Text Converter", () => {
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
-  it("more than 1 char encoding with word", () => {
-    fs.readFileSync.mockReturnValue("<small>")
+  it("mixed encodings with word", () => {
+    fs.readFileSync.mockReturnValue("<small>\n&space")
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
-    expect(result).toEqual("&lt;small&gt;")
+    expect(result).toEqual("&lt;small&gt;<br />&amp;space")
     expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 })
