@@ -1,8 +1,6 @@
 const { PlaintextToHtmlConverter } = require("./plaintext_to_html_converter.js")
 const fs = require("fs")
-const notifier = require('./notifier.js')
 jest.mock("fs")
-jest.mock("./notifier.js")
 
 describe("Text Converter", () => {
   it("simple word", () => {
@@ -10,7 +8,6 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("simple")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("<", () => {
@@ -18,7 +15,6 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("&lt;")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it(">", () => {
@@ -26,7 +22,6 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("&gt;")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("&", () => {
@@ -34,7 +29,6 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("&amp;")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("\n", () => {
@@ -42,7 +36,6 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("<br />")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 
   it("mixed encodings with word", () => {
@@ -50,6 +43,5 @@ describe("Text Converter", () => {
     const converter = new PlaintextToHtmlConverter()
     const result = converter.toHtml()
     expect(result).toEqual("&lt;small&gt;<br />&amp;space")
-    expect(notifier.notify).toHaveBeenCalledWith('HTML encoding done.')
   })
 })

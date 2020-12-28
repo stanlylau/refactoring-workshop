@@ -1,5 +1,4 @@
 // Adapted from https://github.com/emilybache/Racing-Car-Katas
-const notifier = require("./notifier.js")
 const fs = require('fs')
 const path = require("path")
 
@@ -7,7 +6,6 @@ class PlaintextToHtmlConverter {
     toHtml() {
         const text = fs.readFileSync(path.join(__dirname, 'sample.txt'), 'utf8')
         const htmlLines = this._basicHtmlEncode(text)
-        notifier.notify('HTML encoding done.')
         return htmlLines
     }
 
