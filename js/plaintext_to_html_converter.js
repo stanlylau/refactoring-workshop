@@ -9,7 +9,9 @@ class PlaintextToHtmlConverter {
         return htmlLines
     }
 
-    _basicHtmlEncode(source) {
+    _basicHtmlEncode (source) {
+        //pick the character from source string
+        //and increment the pointer
         var stashNextCharacterAndAdvanceThePointer = () => {
             var c = source.charAt(i)
             i += 1
@@ -17,6 +19,8 @@ class PlaintextToHtmlConverter {
 
         };
 
+        //stringfy convertedLine array and push into result
+        //reset convertedLine
         var addANewLine = () => {
             convertedLine = convertedLine.join('')
             result.push(convertedLine)
@@ -52,7 +56,6 @@ class PlaintextToHtmlConverter {
 
             characterToConvert = stashNextCharacterAndAdvanceThePointer();
         }
-
         addANewLine();
         result = result.join('<br />');
         return result;
