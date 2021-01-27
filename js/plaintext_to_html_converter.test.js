@@ -3,45 +3,28 @@ const fs = require("fs")
 jest.mock("fs")
 
 describe("Text Converter", () => {
-  it("simple word", () => {
+  let converter
+  beforeEach(() => {
+    converter = new PlaintextToHtmlConverter()
+  })
+
+  test.each([
+    ["<", "&lt;"],
+    [">", "&gt;"],
+    ["&", "&amp;"],
+    ["\n", "<br />"]
+  ])('char requires conversion', (originalChar, expected) => {
+    fs.readFileSync.mockReturnValue(originalChar)
+    expect(converter.toHtml()).toEqual(expected)
+  });
+
+  it("no conversion", () => {
     fs.readFileSync.mockReturnValue("simple")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("simple")
+    expect(converter.toHtml()).toEqual("simple")
   })
 
-  it("<", () => {
-    fs.readFileSync.mockReturnValue("<")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("&lt;")
-  })
-
-  it(">", () => {
-    fs.readFileSync.mockReturnValue(">")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("&gt;")
-  })
-
-  it("&", () => {
-    fs.readFileSync.mockReturnValue("&")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("&amp;")
-  })
-
-  it("\n", () => {
-    fs.readFileSync.mockReturnValue("\n")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("<br />")
-  })
-
-  it("mixed encodings with word", () => {
+  it("multiple char conversion", () => {
     fs.readFileSync.mockReturnValue("<small>\n&space")
-    const converter = new PlaintextToHtmlConverter()
-    const result = converter.toHtml()
-    expect(result).toEqual("&lt;small&gt;<br />&amp;space")
+    expect(converter.toHtml()).toEqual("&lt;small&gt;<br />&amp;space")
   })
 })
