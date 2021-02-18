@@ -1,15 +1,9 @@
-## If you are using yarn
+## NPM tested on v7.5.4
 
-`yarn` to setup
-
-`yarn test` to run all tests
-
-`yarn test path_to_test_file --watch` to keep tests running upon save
-
-## If you are using npm
-
-`npm install` to setup
+`npm i` to install dependencies
 
 `npm test` to run all tests
 
-`npm test path_to_test_file -- --watchAll` to keep tests running upon save
+`npm run test:watch path_to_test_file` to keep tests running upon save for a specific file
+
+`npm run test:cov` to generate code coverage report

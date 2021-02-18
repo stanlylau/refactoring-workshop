@@ -1,5 +1,5 @@
-const { PlaintextToHtmlConverter } = require("./plaintext_to_html_converter.js")
-const fs = require("fs")
+import { PlaintextToHtmlConverter } from './plaintext_to_html_converter'
+import fs from 'fs'
 jest.mock("fs")
 
 describe("Text Converter", () => {

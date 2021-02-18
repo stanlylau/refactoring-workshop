@@ -1,5 +1,4 @@
-const Game = require("./trivia_game.js")
-
+import Game from './trivia_game'
 describe("Trivia", () => {
   let originalLog
   let loggedMessages

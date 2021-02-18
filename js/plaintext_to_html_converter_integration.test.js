@@ -1,4 +1,4 @@
-const { PlaintextToHtmlConverter } = require("./plaintext_to_html_converter.js")
+import { PlaintextToHtmlConverter } from './plaintext_to_html_converter'
 
 describe("Text Converter integration test", () => {
   it("sample.txt", () => {

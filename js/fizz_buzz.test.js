@@ -1,4 +1,4 @@
-const { say } = require("./fizz_buzz.js")
+import say from './fizz_buzz'
 
 describe("Fizz Buzz", () => {
   it("returns a number", () => {

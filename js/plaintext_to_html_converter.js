@@ -62,6 +62,4 @@ class PlaintextToHtmlConverter {
     }
 }
 
-module.exports = {
-    PlaintextToHtmlConverter
-}
+export { PlaintextToHtmlConverter }

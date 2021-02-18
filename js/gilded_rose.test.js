@@ -1,4 +1,4 @@
-const { Shop, Item } = require("./gilded_rose.js")
+import { Shop, Item } from './gilded_rose'
 
 describe("Gilded Rose", () => {
   it("should foo", () => {

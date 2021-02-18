@@ -14,6 +14,4 @@ function say(number) {
   return number.toString()
 }
 
-module.exports = {
-  say,
-}
+export default say
