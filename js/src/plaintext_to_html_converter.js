@@ -1,6 +1,6 @@
 // Adapted from https://github.com/emilybache/Racing-Car-Katas
-const fs = require('fs')
-const path = require("path")
+import fs from 'fs'
+import path from 'path'
 
 class PlaintextToHtmlConverter {
     toHtml() {
