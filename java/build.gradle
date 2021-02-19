@@ -1,4 +1,4 @@
-group 'unit-testing-workshop'
+group 'refactoring-workshop'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
