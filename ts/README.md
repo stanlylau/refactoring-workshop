@@ -1,4 +1,4 @@
-## NPM tested on v7.5.4
+## How to run
 
 `npm i` to install dependencies
 
